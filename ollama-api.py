@@ -24,7 +24,7 @@ async def infer(request: Request):
             except Exception as e:
                 await queue.put(json.dumps({"error": str(e)}))
             finally:
-                await queue.put(None)  # sentinel
+                await queue.put(None)  
 
         asyncio.create_task(ollama_reader())
 
@@ -35,7 +35,6 @@ async def infer(request: Request):
                     break
                 yield line + "\n"
             except asyncio.TimeoutError:
-                # Keepalive — keeps Cloudflare proxy alive during prefill silence
                 yield '{"keepalive":true}\n'
 
     return StreamingResponse(generate(), media_type="application/x-ndjson")
