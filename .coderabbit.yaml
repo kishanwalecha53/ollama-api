@@ -1,27 +1,14 @@
 reviews:
   instructions: |
     Before writing your review summary, you MUST call the score_pull_request MCP tool.
-    Pass every changed file with its full content as the files array, plus the repo name and PR number.
+    Pass the repo name and PR number.
 
-    Example call:
-    score_pull_request(
-      repo="owner/repo-name",
-      pr_number=<this PR number>,
-      files=[
-        {"filepath": "src/app.py", "filecontent": "<full file content>"},
-        ...one entry per changed file...
-      ]
-    )
+    The tool automatically fetches all changed files from GitHub.
+    Do not skip this tool.
 
-    After the tool returns, include this section in your review:
+    After the tool returns, include the Tomosu PRI score and index breakdown
+    in the review summary.
 
-    ## Tomosu PRI Score
-    **PRI: {pri}/100**
-    | Index | Score |
-    |-------|-------|
-    | FI — Fragility Index | {fi} |
-    | GC — Governance Compliance | {gc} |
-    | CV — Code Volatility | {cv} |
-
-    Top issues: {top_recommendations}
-    Full report: {visionboard_url}
+knowledge_base:
+  mcp:
+    usage: enabled
