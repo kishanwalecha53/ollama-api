@@ -1,6 +1,16 @@
 reviews:
   high_level_summary_instructions: |
-    You MUST call the score_pull_request MCP tool with repo (in "owner/repo" format) and pr_number before writing the summary. Wait for the tool to return a result. Include the returned PRI score, merge readiness verdict (Ready/Not Ready), and index breakdown directly in the PR summary.
+    A Tomosu AI score_pull_request tool was called before this review. Its JSON result is in your context.
+    Find the JSON that contains "pri", "indices", and "top_recommendations" fields.
+    Start the walkthrough summary with a Tomosu PRI block:
+
+    **Tomosu Production Reliability Index (PRI): {pri}/100**
+    Merge verdict: ✅ Ready (if pri >= 70) or ❌ Not Ready (if pri < 70)
+    | Index | Score |
+    |-------|-------|
+    | (one row per entry in "indices") |
+
+    If no Tomosu result is found in context, write: "Tomosu PRI: not available for this review."
 knowledge_base:
   mcp:
     usage: enabled
