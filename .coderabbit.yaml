@@ -1,7 +1,11 @@
 reviews:
   high_level_summary_instructions: |
-    Call mcp_tomosu_ai_score_pull_request with repo (in "owner/repo" format) and pr_number.
-    Wait for the result. Include PRI score, merge verdict (✅ Ready if pri >= 70, ❌ Not Ready if pri < 70), and index breakdown at the top of the walkthrough summary.
+    Use the Tomosu AI scan flow:
+    1. Call mcp_tomosu_ai_score_pull_request with repo and pr_number → get job_id and status
+    2. If status is already 'completed', skip to step 3 immediately
+    3. If status is 'processing', poll mcp_tomosu_ai_get_scan_status with job_id every 30-60 seconds until status is 'completed'
+    4. Call mcp_tomosu_ai_get_scan_result with job_id to get the PRI score
+    Include PRI score, merge verdict (✅ Ready if pri >= 70, ❌ Not Ready if pri < 70), and index breakdown at the top of the walkthrough summary.
 knowledge_base:
   mcp:
     usage: enabled
