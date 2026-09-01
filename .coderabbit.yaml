@@ -1,16 +1,7 @@
 reviews:
   high_level_summary_instructions: |
-    A Tomosu AI score_pull_request tool was called before this review. Its JSON result is in your context.
-    Find the JSON that contains "pri", "indices", and "top_recommendations" fields.
-    Start the walkthrough summary with a Tomosu PRI block:
-
-    **Tomosu Production Reliability Index (PRI): {pri}/100**
-    Merge verdict: ✅ Ready (if pri >= 70) or ❌ Not Ready (if pri < 70)
-    | Index | Score |
-    |-------|-------|
-    | (one row per entry in "indices") |
-
-    If no Tomosu result is found in context, write: "Tomosu PRI: not available for this review."
+    The score_pull_request MCP tool has already been called. Its output is pre-formatted markdown.
+    Copy that markdown block verbatim into the top of the walkthrough — do not paraphrase or omit it.
 knowledge_base:
   mcp:
     usage: enabled
