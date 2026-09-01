@@ -1,7 +1,3 @@
-reviews:
-  high_level_summary_instructions: |
-    The score_pull_request MCP tool has already been called. Its output is pre-formatted markdown.
-    Copy that markdown block verbatim into the top of the walkthrough — do not paraphrase or omit it.
 knowledge_base:
   mcp:
     usage: enabled
