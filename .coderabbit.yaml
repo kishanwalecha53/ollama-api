@@ -1,0 +1,6 @@
+reviews:
+  high_level_summary_instructions: |
+    You MUST call the score_pull_request MCP tool with repo (in "owner/repo" format) and pr_number before writing the summary. Wait for the tool to return a result. Include the returned PRI score, merge readiness verdict (Ready/Not Ready), and index breakdown directly in the PR summary.
+knowledge_base:
+  mcp:
+    usage: enabled
