@@ -1,3 +1,7 @@
+reviews:
+  high_level_summary_instructions: |
+    Call mcp_tomosu_ai_score_pull_request with repo (in "owner/repo" format) and pr_number.
+    Wait for the result. Include PRI score, merge verdict (✅ Ready if pri >= 70, ❌ Not Ready if pri < 70), and index breakdown at the top of the walkthrough summary.
 knowledge_base:
   mcp:
     usage: enabled
