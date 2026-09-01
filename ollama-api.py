@@ -22,7 +22,7 @@ async def infer(request: Request):
                             if line:
                                 await queue.put(line)
             except Exception as e:
-                await queue.put(json.dumps({"error caught while executing": str(e)}))
+                await queue.put(json.dumps({"error caught while running": str(e)}))
             finally:
                 await queue.put(None)  
 
