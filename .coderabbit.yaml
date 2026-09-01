@@ -1,13 +1,7 @@
 reviews:
-  instructions: |
-    Before writing your review summary, you MUST call the score_pull_request MCP tool.
-    Pass the repo name and PR number.
-
-    The tool automatically fetches all changed files from GitHub.
-    Do not skip this tool.
-
-    After the tool returns, include the Tomosu PRI score and index breakdown
-    in the review summary.
+  high_level_summary_instructions: |
+   Always call the score_pull_request MCP tool with the repo name and PR number before writing the summary. 
+   Mention that Tomosu AI analysis has been initiated and results will appear as a separate PR comment.
 
 knowledge_base:
   mcp:
