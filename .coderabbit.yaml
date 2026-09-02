@@ -1,11 +1,31 @@
 reviews:
   high_level_summary_instructions: |
-    Call mcp_tomosu_ai_score_pull_request with repo (format: "owner/repo") and pr_number.
-    It returns a JSON result with pri, merge_ready, indices, and recommendations.
-    Include at the top of the walkthrough summary:
-    - PRI score and merge verdict (✅ Ready if merge_ready=true, ❌ Not Ready if false)
-    - Index breakdown table (fi, gc, cv scores)
-    - Top recommendations with before/after code
+    Before writing the walkthrough summary, call mcp_tomosu_ai_score_pull_request
+    with repo="kishanwalecha53/ollama-api" and the PR number.
+
+    The tool returns JSON with these exact fields:
+      pri (float 0-100), fi (float 0-100), gc (float 0-100), cv (float 0-100),
+      merge_ready (bool), total_issues (int),
+      recommendations (array of: file, category, description, before, after, severity)
+
+    At the top of the walkthrough summary write:
+
+    ## Tomosu AI — Production Reliability
+    **PRI: <pri>/100** <✅ Ready to Merge if merge_ready=true, ❌ Not Ready to Merge if false>
+
+    | Index | Score |
+    |-------|-------|
+    | FI — Fragility Index | <fi> |
+    | GC — Governance Compliance | <gc> |
+    | CV — Code Volatility | <cv> |
+
+    Then for each item in recommendations, write the file, category, description,
+    and before/after code blocks with severity label.
+
+    If the tool returns an error key or the call fails, write:
+    "> Tomosu AI score unavailable for this PR."
+    then continue with the normal walkthrough.
+
 knowledge_base:
   mcp:
     usage: enabled
