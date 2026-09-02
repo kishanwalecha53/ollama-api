@@ -1,10 +1,11 @@
 reviews:
   high_level_summary_instructions: |
-    You MUST complete this 3-step flow before writing the walkthrough summary:
-    1. Call mcp_tomosu_ai_score_pull_request with repo and pr_number → receive job_id
-    2. Call mcp_tomosu_ai_get_scan_status with job_id. If status is 'processing', keep calling every 15-30 seconds. The scan takes 2-3 minutes. Do NOT stop polling. Do NOT write the summary until status is 'completed'.
-    3. Call mcp_tomosu_ai_get_scan_result with job_id → get PRI score.
-    Include PRI score, merge verdict (✅ Ready if pri >= 70, ❌ Not Ready if pri < 70), and index breakdown at the top of the summary.
+    Call mcp_tomosu_ai_score_pull_request with repo (format: "owner/repo") and pr_number.
+    It returns a JSON result with pri, merge_ready, indices, and recommendations.
+    Include at the top of the walkthrough summary:
+    - PRI score and merge verdict (✅ Ready if merge_ready=true, ❌ Not Ready if false)
+    - Index breakdown table (fi, gc, cv scores)
+    - Top recommendations with before/after code
 knowledge_base:
   mcp:
     usage: enabled
