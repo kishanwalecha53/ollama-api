@@ -22,7 +22,7 @@ async def infer(request: Request):
                             if line:
                                 await queue.put(line)
             except Exception as e:
-                await queue.put(json.dumps({"Exception Caught while executing the ollama": str(e)}))
+                await queue.put(json.dumps({"Exception caught": str(e)}))
             finally:
                 await queue.put(None)  
 
