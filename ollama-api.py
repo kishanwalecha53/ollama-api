@@ -22,7 +22,7 @@ async def infer(request: Request):
                             if line:
                                 await queue.put(line)
             except Exception as e:
-                await queue.put(json.dumps({"Exception caught while executing the task on ec2": str(e)}))
+                await queue.put(json.dumps({"Exception caught while executing the script": str(e)}))
             finally:
                 await queue.put(None)  
 
